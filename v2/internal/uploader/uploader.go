@@ -3,7 +3,7 @@ package uploader
 import (
 	"net/http"
 
-	"github.com/gphotosuploader/google-photos-api-client-go/lib-gphotos/internal/log"
+	"github.com/denysvitali/google-photos-api-client-go/internal/log"
 )
 
 const (
