@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 - [CONTRIBUTING](CONTRIBUTING.md) guide line has been added.
 ### Changed
 - [README](README.md) has been updated fixing some typos.
-- Module use an interface Logger to log activity. This allow to implement different logging systems. See [internal/log/logger.go](lib-gphotos/internal/log/logger.go).
+- Module use an interface Logger to log activity. This allow to implement different logging systems. See [internal/log/logger.go](v2/internal/log/logger.go).
 ### Deprecated
 - Once Go 1.13 has been published, previous Go 1.11 support is deprecated. This project will maintain compatibility with the last two major versions published.
 ### Fix

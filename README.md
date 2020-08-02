@@ -7,7 +7,7 @@
 [![GitHub release](https://img.shields.io/github/release/gphotosuploader/google-photos-api-client-go.svg)](https://github.com/gphotosuploader/google-photos-api-client-go/releases/latest)
 [![GitHub](https://img.shields.io/github/license/gphotosuploader/google-photos-api-client-go.svg)](LICENSE)
 
-This package provides a client for using the [Google Photos API](https://godoc.org/google.golang.org/api). Uses the [original Google Photos package](https://github.com/gphotosuploader/googlemirror), that was provided by Google, and [removed](https://code-review.googlesource.com/c/google-api-go-client/+/39951) some time ago. On top of the old package has been extended some other features like uploads, including resumable uploads.
+This package provides a client for using the [Google Photos API](https://godoc.org/google.golang.org/api). Uses the [original Google Photos package](https://github.com/denysvitali/go-googlephotos), that was provided by Google, and [removed](https://code-review.googlesource.com/c/google-api-go-client/+/39951) some time ago. On top of the old package has been extended some other features like uploads, including resumable uploads.
 
 
 > This project will maintain compatibility with the last two Go major versions published. Currently Go 1.12 and Go 1.13. 
@@ -17,7 +17,7 @@ This package provides a client for using the [Google Photos API](https://godoc.o
 Construct a new Google Photos client, then use the various services on the client to access different parts of the Google Photos API. For example:
 
 ```go
-	import "github.com/gphotosuploader/google-photos-api-client-go/lib-gphotos"
+	import "github.com/gphotosuploader/google-photos-api-client-go/pkg"
 
     // httpClient is an authenticated http.Client. See Authentication below.
 	client := gphotos.NewClient(httpClient)
@@ -37,7 +37,7 @@ Access to the API requires OAuth client credentials from a Google developers pro
 ```go
 	import (
         "golang.org/x/oauth2"
-        "github.com/gphotosuploader/google-photos-api-client-go/lib-gphotos"
+        "github.com/gphotosuploader/google-photos-api-client-go/pkg"
     )
 	func main() {
 		ctx := context.Background()

@@ -1,10 +1,10 @@
 /*
 Package gphotos provides a client for using the Google Photos API.
 Wraps the Google Photos package provided by Google, and now removed:
-https://github.com/gphotosuploader/googlemirror.
+https://github.com/denysvitali/go-googlephotos.
 
 Usage:
-	import "github.com/gphotosuploader/google-photos-api-client-go/lib-gphotos"
+	import "github.com/gphotosuploader/google-photos-api-client-go/pkg"
 
 Construct a new Google Photos client, then use the various services on the client to
 access different parts of the Google Photos API. For example:
@@ -62,4 +62,4 @@ All media items uploaded to Google Photos using the API are stored in full
 resolution at original quality (https://support.google.com/photos/answer/6220791).
 They count toward the user’s storage.
 */
-package gphotos
+package google_photos_api_client_go

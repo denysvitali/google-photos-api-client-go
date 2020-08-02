@@ -1,13 +1,13 @@
-package gphotos
+package google_photos_api_client_go
 
 import (
 	"context"
 	"fmt"
+	photoslibrary "github.com/denysvitali/go-googlephotos"
 	"net/http"
 	"strconv"
 	"time"
 
-	"github.com/gphotosuploader/googlemirror/api/photoslibrary/v1"
 	"google.golang.org/api/googleapi"
 )
 

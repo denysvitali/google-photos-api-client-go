@@ -1,10 +1,9 @@
-package gphotos
+package google_photos_api_client_go
 
 import (
 	"context"
 	"errors"
-
-	"github.com/gphotosuploader/googlemirror/api/photoslibrary/v1"
+	photoslibrary "github.com/denysvitali/go-googlephotos"
 )
 
 const (
@@ -41,6 +40,11 @@ func (c *Client) albumByName(ctx context.Context, name, pageToken string) (album
 
 	// The album doesn't exists.
 	return nil, ErrAlbumNotFound
+}
+
+func (c *Client) AlbumById(ctx context.Context, id string) (album *photoslibrary.Album, err error) {
+	albumCall := c.Albums.Get(id)
+	return albumCall.Context(ctx).Do()
 }
 
 // AlbumByName returns the album which match with the specified name.

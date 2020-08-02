@@ -1,11 +1,10 @@
-package gphotos
+package google_photos_api_client_go
 
 import (
 	"context"
 	"errors"
 	"fmt"
-
-	"github.com/gphotosuploader/googlemirror/api/photoslibrary/v1"
+	photoslibrary "github.com/denysvitali/go-googlephotos"
 )
 
 // AddMediaItem returns MediaItem created after uploading `filename` and adding it to `albumID`.
