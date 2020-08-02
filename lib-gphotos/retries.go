@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gphotosuploader/googlemirror/api/photoslibrary/v1"
+	"github.com/denysvitali/go-googlephotos/api/photoslibrary/v1"
 	"google.golang.org/api/googleapi"
 )
 

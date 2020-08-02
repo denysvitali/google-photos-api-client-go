@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/gphotosuploader/googlemirror/api/photoslibrary/v1"
+	"github.com/denysvitali/go-googlephotos/api/photoslibrary/v1"
 )
 
 const (

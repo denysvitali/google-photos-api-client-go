@@ -1,7 +1,7 @@
 /*
 Package gphotos provides a client for using the Google Photos API.
 Wraps the Google Photos package provided by Google, and now removed:
-https://github.com/gphotosuploader/googlemirror.
+https://github.com/denysvitali/go-googlephotos.
 
 Usage:
 	import "github.com/gphotosuploader/google-photos-api-client-go/lib-gphotos"

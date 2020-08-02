@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/gphotosuploader/googlemirror/api/photoslibrary/v1"
+	"github.com/denysvitali/go-googlephotos/api/photoslibrary/v1"
 )
 
 // AddMediaItem returns MediaItem created after uploading `filename` and adding it to `albumID`.

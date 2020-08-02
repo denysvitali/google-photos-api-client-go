@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/gphotosuploader/googlemirror/api/photoslibrary/v1"
+	"github.com/denysvitali/go-googlephotos/api/photoslibrary/v1"
 	"golang.org/x/oauth2"
 
 	"github.com/gphotosuploader/google-photos-api-client-go/lib-gphotos/internal/log"

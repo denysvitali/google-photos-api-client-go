@@ -2,7 +2,7 @@ package gphotos
 
 import (
 	"context"
-	"github.com/gphotosuploader/googlemirror/api/photoslibrary/v1"
+	"github.com/denysvitali/go-googlephotos/api/photoslibrary/v1"
 )
 
 
@@ -18,20 +18,23 @@ func (c *Client) MediaItemsByAlbum(ctx context.Context, album *photoslibrary.Alb
 	// Fetch all pages
 	mediaItems := make([]*photoslibrary.MediaItem, 0)
 	currentMediaItems := smr.MediaItems
+
+	var nextPageToken = smr.NextPageToken
+
 	for ;; {
 		if len(currentMediaItems) == 0 || smr == nil {
 			break
 		}
 
 		if limit != 0 {
-			if len(currentMediaItems)+len(currentMediaItems) > limit {
+			if len(mediaItems)+len(currentMediaItems) > limit {
 				break
 			}
 		}
 
 		mediaItems = append(mediaItems, currentMediaItems...)
 
-		if smr.NextPageToken == "" {
+		if nextPageToken == "" {
 			break
 		}
 
@@ -40,13 +43,16 @@ func (c *Client) MediaItemsByAlbum(ctx context.Context, album *photoslibrary.Alb
 		mediaItemsCall = c.MediaItems.Search(&photoslibrary.SearchMediaItemsRequest{
 			AlbumId: album.Id,
 			PageSize: defaultPageSize,
-			PageToken: smr.NextPageToken})
+			PageToken: nextPageToken})
 
 		smr, err = mediaItemsCall.Context(ctx).Do()
 		if err != nil {
 			c.log.Error(err)
 			return nil, err
 		}
+
+		nextPageToken = smr.NextPageToken
+		currentMediaItems = smr.MediaItems
 	}
 
 	return mediaItems, nil
