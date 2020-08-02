@@ -25,12 +25,12 @@ type Client struct {
 	token *oauth2.Token // DEPRECATED: `token` will disappear in the next MAJOR version.
 }
 
-// NewClientWithResumableUploads constructs a new gphotos.Client from the provided HTTP client and
+// NewClientWithOptions constructs a new gphotos.Client from the provided HTTP client and
 // the given options.
 //
 // `httpClient` is an client with authentication credentials.
 // `store` is an UploadSessionStore to keep upload sessions to resume uploads.
-func NewClientWithResumableUploads(httpClient *http.Client, store uploader.UploadSessionStore, options ...Option) (*Client, error) {
+func NewClientWithOptions(httpClient *http.Client, store UploadSessionStore, options ...Option) (*Client, error) {
 	photosService, err := photoslibrary.New(httpClient)
 	if err != nil {
 		return nil, err
@@ -63,51 +63,21 @@ func WithLogger(l log.Logger) func(*Client) {
 
 // Option defines an option for a Client
 type Option func(*Client)
+type UploadSessionStore uploader.UploadSessionStore
 
-// codebeat:disable
+type MemoryUploadSessionStore struct {
+	store map[string][]byte
+}
+var _ UploadSessionStore = (*MemoryUploadSessionStore) (nil)
 
-// NewClient constructs a new PhotosClient from an oauth httpClient.
-//
-// `httpClient` is an HTTP Client with authentication credentials.
-//
-// DEPRECATED: Use NewClientWithOptions(...) instead.
-// This package doesn't need Client.token anymore, used `Client.Client` instead.
-func NewClient(httpClient *http.Client, maybeToken ...*oauth2.Token) (*Client, error) {
-	var token *oauth2.Token
-
-	if len(maybeToken) > 0 {
-		token = maybeToken[0]
-	}
-
-	photosService, err := photoslibrary.New(httpClient)
-	if err != nil {
-		return nil, err
-	}
-
-	upldr, err := uploader.NewUploader(httpClient)
-	if err != nil {
-		return nil, err
-	}
-
-	c := &Client{
-		Service:  photosService,
-		uploader: upldr,
-		log:      log.NewDiscardLogger(),
-	}
-
-	c.token = token
-	return c, nil
+func (m MemoryUploadSessionStore) Get(fingerprint string) []byte {
+	return m.store[fingerprint]
 }
 
-// Token returns the value of the token used by the gphotos Client
-// Cannot be used to set the token
-//
-// DEPRECATED: Use the authenticated HTTP Client `Client.Client` instead.
-func (c *Client) Token() *oauth2.Token {
-	if c.token == nil {
-		return nil
-	}
-	return &(*c.token)
+func (m MemoryUploadSessionStore) Set(fingerprint string, url []byte) {
+	m.store[fingerprint] = url
 }
 
-// codebeat:enable
+func (m MemoryUploadSessionStore) Delete(fingerprint string) {
+	delete(m.store, fingerprint)
+}

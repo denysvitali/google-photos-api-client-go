@@ -43,6 +43,11 @@ func (c *Client) albumByName(ctx context.Context, name, pageToken string) (album
 	return nil, ErrAlbumNotFound
 }
 
+func (c *Client) AlbumById(ctx context.Context, id string) (album *photoslibrary.Album, err error) {
+	albumCall := c.Albums.Get(id)
+	return albumCall.Context(ctx).Do()
+}
+
 // AlbumByName returns the album which match with the specified name.
 //
 // NOTE: We are maintaining backwards compatibility, but `found` should be DEPRECATED and
