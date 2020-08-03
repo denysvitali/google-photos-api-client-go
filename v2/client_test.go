@@ -1,9 +1,9 @@
 package google_photos_api_client_go_test
 
 import (
-	gphotos "github.com/denysvitali/google-photos-api-client-go"
-	"github.com/denysvitali/google-photos-api-client-go/internal/log"
-	"github.com/denysvitali/google-photos-api-client-go/internal/uploader"
+	gphotos "github.com/denysvitali/google-photos-api-client-go/v2"
+	"github.com/denysvitali/google-photos-api-client-go/v2/internal/log"
+	"github.com/denysvitali/google-photos-api-client-go/v2/internal/uploader"
 	"net/http"
 	"testing"
 )

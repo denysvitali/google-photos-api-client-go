@@ -1,7 +1,7 @@
 package google_photos_api_client_go_test
 
 import (
-	"github.com/denysvitali/google-photos-api-client-go"
+	"github.com/denysvitali/google-photos-api-client-go/v2"
 	"testing"
 )
 

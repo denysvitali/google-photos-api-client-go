@@ -8,8 +8,8 @@ import (
 
 	photoslibrary "github.com/denysvitali/go-googlephotos"
 
-	"github.com/denysvitali/google-photos-api-client-go/internal/log"
-	"github.com/denysvitali/google-photos-api-client-go/internal/uploader"
+	"github.com/denysvitali/google-photos-api-client-go/v2/internal/log"
+	"github.com/denysvitali/google-photos-api-client-go/v2/internal/uploader"
 )
 
 // Client is a client for uploading a media.

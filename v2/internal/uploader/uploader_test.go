@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/denysvitali/google-photos-api-client-go/internal/log"
+	"github.com/denysvitali/google-photos-api-client-go/v2/internal/log"
 )
 
 func TestNewUploader(t *testing.T) {
